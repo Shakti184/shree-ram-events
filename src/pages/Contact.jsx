@@ -14,10 +14,22 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulate form submission
-    console.log(formData);
+    
+    // 1. Format the message for WhatsApp
+    const whatsappMessage = `*New Event Inquiry* %0A%0A` +
+      `*Name:* ${formData.name} %0A` +
+      `*Phone:* ${formData.phone} %0A` +
+      `*Date:* ${formData.date} %0A` +
+      `*Message:* ${formData.message}`;
+
+    // 2. Create the WhatsApp URL (Your number: 8052019256)
+    const whatsappUrl = `https://wa.me/918052019256?text=${whatsappMessage}`;
+
+    // 3. Open WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
+
+    // 4. Show success message on screen
     setIsSubmitted(true);
-    // Reset form after 3 seconds
     setTimeout(() => {
       setIsSubmitted(false);
       setFormData({ name: '', phone: '', date: '', message: '' });
