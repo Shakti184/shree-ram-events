@@ -7,10 +7,13 @@ import Home from './pages/Home';
 import Services from './pages/Services';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
+// Import the Scroll Helper
+import ScrollToTop from './components/utils/ScrollToTop';
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       {/* Wrap everything inside Layout so Navbar & Footer appear on every page */}
       <Layout>
         <Routes>
