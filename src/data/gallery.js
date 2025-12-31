@@ -95,8 +95,14 @@ export const galleryImages = [
     category: 'Music',
     title: 'Stage Cold Pyro'
   },
-  {
+   {
     id: 13,
+    src: pyroEffect,
+    category: 'Music',
+    title: 'Stage Cold Pyro'
+  },
+  {
+    id: 14,
     src: stageEffect,
     category: 'Music',
     title: 'Special Stage FX'
@@ -104,14 +110,14 @@ export const galleryImages = [
 
   // --- DECOR ---
   {
-    id: 14,
+    id: 15,
     src: decorImg,
     category: 'Decor',
     title: 'Floral Arrangements'
   },
   // Adding a few web placeholders to fill the grid for other categories
   {
-    id: 15,
+    id: 16,
     src: "https://wedmevibes.com/wp-content/uploads/2024/06/gallery2.jpeg",
     category: 'Decor',
     title: 'Mandap Design'
@@ -119,13 +125,13 @@ export const galleryImages = [
 
   // --- CATERING ---
   {
-    id: 16,
+    id: 17,
     src: cateringImg,
     category: 'Catering',
     title: 'Premium Buffet Setup'
   },
   {
-    id: 17,
+    id: 18,
     src: "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80",
     category: 'Catering',
     title: 'Live Food Counters'
