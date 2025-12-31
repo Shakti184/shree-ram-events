@@ -97,7 +97,7 @@ export const galleryImages = [
   },
    {
     id: 13,
-    src: pyroEffect,
+    src: pyroEffect1,
     category: 'Music',
     title: 'Stage Cold Pyro'
   },
