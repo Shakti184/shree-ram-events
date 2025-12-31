@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import SectionHeading from '../components/ui/SectionHeading';
-import Lightbox from '../components/ui/Lightbox'; // Import the new component
-import { galleryImages } from '../data/gallery';
+import Lightbox from '../components/ui/Lightbox'; 
+// Ensure you have created this data file from Step 1
+import { galleryImages } from '../data/gallery'; 
 
-const categories = ['All', 'Wedding', 'Haldi', 'Decor', 'Catering', 'Music'];
+// Added 'Entries' to the list because you have many entry photos
+const categories = ['All', 'Wedding', 'Entries', 'Decor', 'Catering', 'Music'];
 
 const Gallery = () => {
   const [filter, setFilter] = useState('All');
-  const [selectedImg, setSelectedImg] = useState(null); // State for Lightbox
+  const [selectedImg, setSelectedImg] = useState(null); 
 
   const filteredImages = filter === 'All' 
     ? galleryImages 
@@ -27,7 +28,7 @@ const Gallery = () => {
 
       {/* --- HEADER --- */}
       <div className="bg-brand-dark text-white py-16 text-center relative overflow-hidden">
-        {/* Background Pattern (Optional CSS trick) */}
+        {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle, #FF9933 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
         
         <h1 className="text-4xl md:text-5xl font-heading font-bold text-brand-primary relative z-10">Our Portfolio</h1>
@@ -66,7 +67,7 @@ const Gallery = () => {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
                 key={img.id}
-                onClick={() => setSelectedImg(img)} // OPEN LIGHTBOX
+                onClick={() => setSelectedImg(img)}
                 className="group relative h-72 rounded-2xl overflow-hidden shadow-md cursor-zoom-in border border-gray-100 bg-white"
               >
                 <img 
@@ -77,12 +78,12 @@ const Gallery = () => {
                 />
                 
                 {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                   <span className="text-brand-primary font-bold text-xs uppercase tracking-wider mb-1">
                     {img.category}
                   </span>
-                  <span className="text-white font-heading text-lg font-bold">
-                    View Full Size
+                  <span className="text-white font-heading text-lg font-bold leading-tight">
+                    {img.title || "View Image"}
                   </span>
                 </div>
               </motion.div>
