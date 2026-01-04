@@ -1,12 +1,86 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, Calendar, Users, Music, Instagram, Facebook } from 'lucide-react';
+import { 
+  ArrowRight, Star, Calendar, Users, Music, Instagram, Facebook,
+  Sparkles, Zap, Aperture, Crown, Heart, Camera // <--- Added missing icon imports here
+} from 'lucide-react';
 import { motion } from 'framer-motion';
+
 import SectionHeading from '../components/ui/SectionHeading';
 import FAQ from '../components/features/FAQ';
 import { testimonials } from '../data/testimonials';
 import WhatsAppBtn from '../components/ui/WhatsAppBtn';
 
+// --- IMPORT ENTRY & EFFECT IMAGES ---
+import bubbleEntry from '../assets/images/bubble-entry.jpeg';
+import fogEntry from '../assets/images/fog-entry.jpeg';
+import glassEntry from '../assets/images/glass-entry.jpeg';
+import handPyro from '../assets/images/hand-pyro.jpeg';
+import mirrorEntry from '../assets/images/mirror-entry.jpeg';
+import pyroEffect from '../assets/images/pyro-effect.jpeg';
+import stageEffect from '../assets/images/stage-effect.jpeg';
+
 const Home = () => {
+  // --- DATA: SPECIAL ENTRIES & EFFECTS ---
+  const entryServices = [
+    {
+      id: "entry-1",
+      title: "Matka Fog Entry",
+      description: "Walk through clouds with our heavy fog matka entry effect.",
+      image: fogEntry,
+      icon: <Sparkles className="w-5 h-5" />
+    },
+    {
+      id: "entry-2",
+      title: "Bridal Hand Pyro",
+      description: "A stunning, safe cold pyro sparkling effect held by the bride/groom.",
+      image: handPyro,
+      icon: <Zap className="w-5 h-5" />
+    },
+    {
+      id: "entry-3",
+      title: "Infinity Mirror Entry",
+      description: "A luxury pathway with reflective mirror flooring for a royal walk.",
+      image: mirrorEntry,
+      icon: <Aperture className="w-5 h-5" />
+    },
+    {
+      id: "entry-4",
+      title: "Glass Floor Walkway",
+      description: "Premium glass aisle setup with under-lighting for a glowing entrance.",
+      image: glassEntry,
+      icon: <Crown className="w-5 h-5" />
+    },
+    {
+      id: "entry-5",
+      title: "Stage Cold Pyro",
+      description: "Grand stage shots with synchronized cold fire fountains.",
+      image: pyroEffect,
+      icon: <Zap className="w-5 h-5" />
+    },
+    {
+      id: "entry-6",
+      title: "Dreamy Bubble Entry",
+      description: "Thousands of bubbles creating a fairytale atmosphere.",
+      image: bubbleEntry,
+      icon: <Heart className="w-5 h-5" />
+    },
+    {
+      id: "entry-7",
+      title: "Special Stage FX",
+      description: "CO2 jets, papers blasts, and professional lighting effects.",
+      image: stageEffect,
+      icon: <Camera className="w-5 h-5" />
+    },
+    {
+      id: "entry-8",
+      title: "DJ & Sound Setup",
+      description: "High-bass sound systems and intelligent lighting for the dance floor.",
+      image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=1470",
+      icon: <Music className="w-5 h-5" />
+    }
+  ];
+
   return (
     <div className="w-full">
       {/* Floating WhatsApp Button (Fixed Position) */}
@@ -115,40 +189,38 @@ const Home = () => {
         </div>
       </div>
 
-      {/* --- SERVICES PREVIEW --- */}
-      <div className="py-20 bg-brand-light"> 
+      {/* --- SECTION 2: SPECIAL ENTRIES & VISUALS (The New Images) --- */}
+      <div className="bg-brand-light py-20">
         <div className="container mx-auto px-4">
           <SectionHeading 
-            title="Our Royal Services" 
-            subtitle="We provide end-to-end event management services so you can enjoy your special day without stress." 
+             title="Grand Entries & Visual Effects" 
+             subtitle="Make your entry viral-worthy with our special effects collection." 
+             centered={true} 
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            {[
-              { title: "Wedding Decoration", img: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069&auto=format&fit=crop", desc: "Theme-based stages, floral arrangements, and lighting that sets the perfect mood." },
-              { title: "Premium Catering", img: "https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=2070&auto=format&fit=crop", desc: "Delicious vegetarian and non-vegetarian menus tailored to your taste and tradition." },
-              { title: "DJ & Entertainment", img: "https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=2070&auto=format&fit=crop", desc: "Live bands, DJs, and entry concepts like 'Rath' and vintage cars for the groom." }
-            ].map((service, idx) => (
-              <div key={idx} className="bg-white rounded-2xl shadow-lg overflow-hidden group hover:-translate-y-2 transition-transform duration-300 border border-gray-100">
-                <div className="h-56 overflow-hidden relative">
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10"></div>
-                  <img src={service.img} alt={service.title} className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+            {entryServices.map((item, index) => (
+              <motion.div 
+                key={item.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all group"
+              >
+                <div className="h-48 overflow-hidden relative">
+                   <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                   <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-4">
+                      <h4 className="text-white font-bold text-lg flex items-center gap-2">
+                        {item.icon} {item.title}
+                      </h4>
+                   </div>
                 </div>
-                <div className="p-8">
-                  <h3 className="text-xl font-bold font-heading mb-3 text-brand-dark">{service.title}</h3>
-                  <p className="text-gray-600 mb-6 text-sm leading-relaxed">{service.desc}</p>
-                  <Link to="/services" className="text-brand-primary font-bold hover:gap-2 transition-all flex items-center uppercase text-xs tracking-widest">
-                    Read More <ArrowRight size={14} className="ml-1" />
-                  </Link>
+                <div className="p-4">
+                  <p className="text-gray-600 text-sm">{item.description}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
-          
-          <div className="text-center mt-12">
-            <Link to="/services" className="inline-block border-2 border-brand-primary text-brand-primary px-10 py-3 rounded-full font-bold hover:bg-brand-primary hover:text-white transition uppercase tracking-wide text-sm">
-              View All Services
-            </Link>
           </div>
         </div>
       </div>

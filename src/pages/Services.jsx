@@ -100,7 +100,6 @@ const Services = () => {
       image: stageEffect,
       icon: <Camera className="w-5 h-5" />
     },
-    // Added a placeholder for the 8th slot to balance the grid
     {
       id: "entry-8",
       title: "DJ & Sound Setup",
@@ -139,44 +138,7 @@ const Services = () => {
         </div>
       </div>
 
-      {/* --- SECTION 2: SPECIAL ENTRIES & VISUALS (The New Images) --- */}
-      <div className="bg-brand-light py-20">
-        <div className="container mx-auto px-4">
-          <SectionHeading 
-             title="Grand Entries & Visual Effects" 
-             subtitle="Make your entry viral-worthy with our special effects collection." 
-             centered={true} 
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-            {entryServices.map((item, index) => (
-              <motion.div 
-                key={item.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-                viewport={{ once: true }}
-                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all group"
-              >
-                <div className="h-48 overflow-hidden relative">
-                   <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                   <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-4">
-                      <h4 className="text-white font-bold text-lg flex items-center gap-2">
-                        {item.icon} {item.title}
-                      </h4>
-                   </div>
-                </div>
-                <div className="p-4">
-                  <p className="text-gray-600 text-sm">{item.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-
-      {/* --- SECTION 1: CORE SERVICES (The Big 3) --- */}
+      {/* --- SECTION 1: CORE SERVICES --- */}
       <div className="bg-white py-20">
         <div className="container mx-auto px-4">
           <SectionHeading title="Core Planning Services" subtitle="Everything you need for a perfect event foundation." centered={true} />
@@ -201,6 +163,8 @@ const Services = () => {
                    </div>
                    <h3 className="text-2xl font-heading font-bold mb-3 text-brand-dark">{service.title}</h3>
                    <p className="text-gray-600 mb-6">{service.description}</p>
+                   
+                   {/* BUTTON 1: CORE SERVICES */}
                    <Link to="/contact" className="text-brand-primary font-bold hover:underline flex items-center">
                      Book Now <ArrowRight size={16} className="ml-2" />
                    </Link>
@@ -211,7 +175,47 @@ const Services = () => {
         </div>
       </div>
 
-      
+      {/* --- SECTION 2: GRAND ENTRIES & VISUALS --- */}
+      <div className="bg-brand-light py-20">
+        <div className="container mx-auto px-4">
+          <SectionHeading 
+             title="Grand Entries & Visual Effects" 
+             subtitle="Make your entry viral-worthy with our special effects collection." 
+             centered={true} 
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+            {entryServices.map((item, index) => (
+              <motion.div 
+                key={item.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all group flex flex-col"
+              >
+                <div className="h-48 overflow-hidden relative">
+                   <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                   <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-4">
+                      <h4 className="text-white font-bold text-lg flex items-center gap-2">
+                        {item.icon} {item.title}
+                      </h4>
+                   </div>
+                </div>
+                <div className="p-4 flex flex-col flex-grow">
+                  <p className="text-gray-600 text-sm mb-4 flex-grow">{item.description}</p>
+                  
+                  {/* BUTTON 2: ENTRY SERVICES (NEW ADDITION) */}
+                  <Link to="/contact" className="text-brand-primary text-xs font-bold uppercase tracking-widest hover:text-orange-600 inline-flex items-center self-start border-b border-transparent hover:border-brand-primary pb-0.5 transition-all">
+                    Book Now <ArrowRight size={12} className="ml-1" />
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* --- VALUE PROPOSITION --- */}
       <div className="bg-brand-dark text-white py-20 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/10 rounded-full blur-3xl"></div>
